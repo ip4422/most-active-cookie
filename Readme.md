@@ -46,10 +46,20 @@ fbcn5UAVanZf6UtG,2018-12-08T09:30:00+00:00
 
 ### Example
 
+#### Preparation
+
+Change Permissions: Make the script executable by running the following command in the terminal:
+
+```sh
+chmod +x most_active_cookie.py
+```
+
+#### Execution
+
 To obtain the most active cookie for 9th Dec 2018 from the log file `cookie_log.csv`:
 
 ```sh
-./[command] -f cookie_log.csv -d 2018-12-09
+./most_active_cookie.py -f cookie_log.csv -d 2018-12-09
 ```
 
 And it would write to stdout:
@@ -61,7 +71,7 @@ AtY0laUfhglK3lC7
 To obtain the most active cookie for 9th Dec 2018 from the log file `cookie_log.csv` with log level set to `INFO` and log file `most_active_cookie.log`:
 
 ```sh
-./[command] -f cookie_log.csv -d 2018-12-09 --log-level=INFO --log-file=most_active_cookie.log
+./most_active_cookie.py -f cookie_log.csv -d 2018-12-09 --log-level=INFO --log-file=most_active_cookie.log
 ```
 
 It would write to stdout:
@@ -75,4 +85,16 @@ It would write to stdout:
 2024-05-29 08:31:28,448 - INFO - Counted cookies: {'AtY0laUfhglK3lC7': 2, 'SAZuXPGUrfbcn5UA': 1, '5UAVanZf6UtGyKVS': 1}
 2024-05-29 08:31:28,448 - INFO - Most active cookies: ['AtY0laUfhglK3lC7']
 AtY0laUfhglK3lC7
+```
+
+And in this case it will create log file `most_active_cookie.log` with the following content:
+
+```pre
+2024-05-29 09:54:32,762 - INFO - Provided cli arguments: file='cookie_log.csv', date='2018-12-09', log_level='INFO', log_file='most_active_cookie.log'
+2024-05-29 09:54:32,762 - INFO - Initialized CookieLogProcessor with file: cookie_log.csv
+2024-05-29 09:54:32,762 - INFO - Reading log file: cookie_log.csv
+2024-05-29 09:54:32,762 - INFO - Read 8 cookies from file
+2024-05-29 09:54:32,762 - INFO - Filtering and counting cookies for date: 2018-12-09
+2024-05-29 09:54:32,762 - INFO - Counted cookies: {'AtY0laUfhglK3lC7': 2, 'SAZuXPGUrfbcn5UA': 1, '5UAVanZf6UtGyKVS': 1}
+2024-05-29 09:54:32,762 - INFO - Most active cookies: ['AtY0laUfhglK3lC7']
 ```
